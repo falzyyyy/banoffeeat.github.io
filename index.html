@@ -20,6 +20,22 @@
     <link rel="icon" href="img/Lezat dan Nikmat.svg" type="image/x-icon" />
   </head>
   <body>
+    <audio id="backgroundMusic" controls autoplay>
+      <source src="music\NewJeans-Cool Wth You.Mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- toggle music -->
+
+    <div class="music-toggle">
+      <input type="checkbox" id="musicSwitch" />
+      <label for="musicSwitch"></label>
+
+      <input type="range" id="musicVolume" min="0" max="1" step="0.1" value="1" />
+      <label for="musicVolume"></label>
+
+      <!-- end toggle music -->
+    </div>
+
     <!-- Navbar Brand -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
@@ -45,6 +61,13 @@
               <a class="nav-link" href="#social-media">Social Media</a>
             </li>
           </ul>
+
+          <!-- Button Volume di dalam Navbar -->
+          <div class="volume-buttons">
+            <button id="btnVolumeDown" class="btn btn-dark btn-sm" onclick="changeVolume(-0.1)"><i class="fas fa-volume-down"></i></button>
+            <button id="btnVolumeUp" class="btn btn-dark btn-sm" onclick="changeVolume(0.1)"><i class="fas fa-volume-up"></i></button>
+          </div>
+          <!-- End Button Volume di dalam Navbar -->
         </div>
       </div>
     </nav>
@@ -159,7 +182,7 @@
     <!-- footer -->
     <footer class="footer mt-auto py-3">
       <div class="container text-center">
-        <span class="text-muted">© 2023 BANOFFEAT. All rights reserved.</span>
+        <span class="text-muted">© 2023 BANOFFEEAT. All rights reserved.</span>
       </div>
     </footer>
     <!-- end footer -->
@@ -170,6 +193,41 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
+    </script>
+
+    <script>
+      const backgroundMusic = document.getElementById("backgroundMusic");
+      const musicSwitch = document.getElementById("musicSwitch");
+      const musicVolumeInput = document.getElementById("musicVolume");
+
+      // Mulai pemutaran musik ketika tombol diklik
+      musicSwitch.addEventListener("click", function () {
+        backgroundMusic.muted = !this.checked;
+      });
+
+      // Mengatur volume musik berdasarkan nilai input range
+      musicVolumeInput.addEventListener("input", function () {
+        backgroundMusic.volume = this.value;
+      });
+
+      // Fungsi untuk mengatur volume musik berdasarkan perubahan tertentu
+      function changeVolume(delta) {
+        if (backgroundMusic.volume + delta >= 0 && backgroundMusic.volume + delta <= 1) {
+          backgroundMusic.volume += delta;
+        }
+      }
+
+      // Tombol "Volume Up" untuk menambahkan volume sebesar 0.1
+      const btnVolumeUp = document.getElementById("btnVolumeUp");
+      btnVolumeUp.addEventListener("click", function () {
+        changeVolume(0.1);
+      });
+
+      // Tombol "Volume Down" untuk mengurangi volume sebesar 0.1
+      const btnVolumeDown = document.getElementById("btnVolumeDown");
+      btnVolumeDown.addEventListener("click", function () {
+        changeVolume(-0.1);
+      });
     </script>
   </body>
 </html>
