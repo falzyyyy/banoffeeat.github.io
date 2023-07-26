@@ -3,3 +3,8 @@ body {
   font-family: "REM", sans-serif;
   font-size: 15px;
 }
+
+.navbar {
+  width: auto;
+  height: auto;
+}
