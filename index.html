@@ -66,6 +66,12 @@
           <div class="volume-buttons">
             <button id="btnVolumeDown" class="btn btn-dark btn-sm" onclick="changeVolume(-0.1)"><i class="fas fa-volume-down"></i></button>
             <button id="btnVolumeUp" class="btn btn-dark btn-sm" onclick="changeVolume(0.1)"><i class="fas fa-volume-up"></i></button>
+
+            <!-- Tambahkan tombol play -->
+            <button id="btnPlay" class="btn btn-dark btn-sm"><i class="fas fa-play"></i></button>
+
+            <!-- Tambahkan tombol pause -->
+            <button id="btnPause" class="btn btn-dark btn-sm"><i class="fas fa-pause"></i></button>
           </div>
           <!-- End Button Volume di dalam Navbar -->
         </div>
@@ -200,9 +206,18 @@
       const musicSwitch = document.getElementById("musicSwitch");
       const musicVolumeInput = document.getElementById("musicVolume");
 
-      // Mulai pemutaran musik ketika tombol diklik
-      musicSwitch.addEventListener("click", function () {
-        backgroundMusic.muted = !this.checked;
+      // Mulai pemutaran musik ketika tombol play diklik
+      const btnPlay = document.getElementById("btnPlay");
+      btnPlay.addEventListener("click", function () {
+        backgroundMusic.play();
+        musicSwitch.checked = true; // Nyalakan juga toggle jika musik dimulai
+      });
+
+      // Jeda pemutaran musik ketika tombol pause diklik
+      const btnPause = document.getElementById("btnPause");
+      btnPause.addEventListener("click", function () {
+        backgroundMusic.pause();
+        musicSwitch.checked = false; // Matikan juga toggle jika musik dijeda
       });
 
       // Mengatur volume musik berdasarkan nilai input range
