@@ -45,10 +45,42 @@ body {
   transition: transform 0.2s;
 }
 
-.music-toggle input[type="checkbox"]:checked + label {
-  background-color: #007bff; /* Warna latar belakang tombol toggle saat musik aktif */
+/* social media colour */
+.social-icon {
+  font-size: 25px;
+  color: black;
 }
 
-.music-toggle input[type="checkbox"]:checked + label:after {
-  transform: translateX(20px); /* Menggeser tombol ke kanan saat musik aktif */
+/* style.css */
+/* Tambahkan jarak di antara ikon-ikon sosial media */
+.social-icons {
+  margin-top: 25px;
+}
+
+/* Perbesar ukuran ikon sosial media */
+.social-icon {
+  font-size: 30px;
+}
+
+/* Tambahkan jarak di antara ikon-ikon sosial media */
+.social-icon:not(:last-child) {
+  margin-right: 15px;
+}
+
+/* Perbesar ukuran toogle switch */
+.music-toggle label {
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.music-toggle label::before {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+/* Atur jarak antara toogle switch dan tombol volume */
+.volume-buttons {
+  margin-top: 10px;
 }
